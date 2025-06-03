@@ -2,10 +2,13 @@
 
 import { motion } from "framer-motion"
 import TestimonialStack from "./testimonial-stack"
-import { useRouter } from "next/navigation"
+
+import { useState } from "react"
+import ContactFormModal from "@/components/landing-page/components/contactform"
 
 export default function Testimonials() {
-  const router=useRouter()
+  
+  const [openContact, setOpenContact] = useState(false)
   return (
     <section className="py-24 bg-gradient-to-b from-snow-white to-mint-green relative overflow-hidden">
       <div className="container mx-auto px-4">
@@ -70,7 +73,7 @@ export default function Testimonials() {
           className="text-center mt-16"
         >
           <p className="text-lg font-medium text-soft-blue">Join our team today</p>
-          <button  onClick={()=> router.push('/patient/login')}
+          <button  onClick={() => setOpenContact(true)}
           className="mt-4 bg-gradient-to-r from-soft-blue to-mint-green text-snow-white px-8 py-3 rounded-full font-bold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
             Start Your Digital Mrketing Journey
           </button>
@@ -80,6 +83,8 @@ export default function Testimonials() {
       {/* Background elements */}
       <div className="absolute top-20 left-10 w-64 h-64 bg-soft-blue/10 rounded-full blur-3xl opacity-50" />
       <div className="absolute bottom-20 right-10 w-64 h-64 bg-mint-green/10 rounded-full blur-3xl opacity-50" />
+              <ContactFormModal open={openContact} setOpen={setOpenContact} />
+              
     </section>
   )
 }

@@ -5,11 +5,17 @@ import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Users, ArrowRight, Search, Contact,Video, Briefcase, Wallet ,Rocket} from "lucide-react"
-import { useRouter } from "next/navigation"
+
+
+// Remove useRouter if no longer used
+import ContactFormModal from "@/components/landing-page/components/contactform"
+
 
 export default function MissionStats() {
   
   const [dashOffset, setDashOffset] = useState(1000)
+  const [openContact, setOpenContact] = useState(false)
+
 
   useEffect(() => {
     // Use CSS animations instead of anime.js
@@ -20,7 +26,7 @@ export default function MissionStats() {
     return () => clearInterval(interval)
   }, [])
 
-  const router=useRouter();
+  
   return (
     <section className="py-20  px-4 md:px-10 bg-gradient-to-b from-snow-white to-mint-green">
       <div className="max-w-7xl mx-auto">
@@ -195,14 +201,17 @@ export default function MissionStats() {
                     <p className="text-gray-600 mb-2">Join our network</p>
                   </div>
                 </div>
-                <Button  onClick={() => router.push('/roles')} className="w-full mt-4 bg-soft-blue hover:bg-[#1a3a5f] text-white">
+                <Button onClick={() => setOpenContact(true)} className="w-full mt-4 bg-soft-blue hover:bg-[#1a3a5f] text-white">
                   Join Market Craft<ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
+
               </Card>
             </motion.div>
           </motion.div>
         </div>
       </div>
+      <ContactFormModal open={openContact} setOpen={setOpenContact} />
+
     </section>
   )
 }
