@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@theme {
+  --color-soft-blue: oklch(0.55 0.15 210);
+  --color-mint-green: oklch(0.72 0.11 178);
+  --color-soft-coral: oklch(0.65 0.25 10);
+  --color-snow-white: oklch(0.98 0.02 100);
+  --color-dark-slate-gray: oklch(0.15 0.05 210);
+  --color-cool-gray: oklch(0.35 0.05 180);
+}
+
+html {
+  scroll-behavior: smooth;
+}
