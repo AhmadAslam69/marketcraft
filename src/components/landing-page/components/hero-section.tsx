@@ -107,14 +107,14 @@ export default function HeroSection() {
             transition={{ duration: 0.7, delay: 0.8 }}
             className="relative z-10"
           >
-            <div className="relative">
+            <div className="relative flex items-center justify-center h-full">
               <div className="absolute inset-0 bg-gradient-to-r from-[#34C759]/5 to-[#8A2BE2]/5 rounded-full blur-2xl"></div>
               <Image
                 src="/logo/marketcraftlogo.png"
                 alt="Marketcraft"
-                width={500}
+                width={250}
                 height={0} // height will auto-adjust
-                className="relative z-10 h-auto w-[500px]"
+                className="relative z-10 h-auto w-[300px] brightness-90 contrast-120"
                 priority
               />
             </div>

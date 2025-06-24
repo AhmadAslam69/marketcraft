@@ -126,6 +126,11 @@ export function Clients() {
                       title: "Mehdees",
                       desc: "Premium Attar brand, bringing elegance to life.",
                     },
+                    {
+                      image: "/clients/denti.png",
+                      title: "Dr. Inqalab Freed",
+                      desc: "Dr. Inqalab Fareed is a public health speaker and a practicing dentist from Multan, Pakistan.",
+                    },
                   ].map((item, index) => (
                     <motion.div
                       key={index}

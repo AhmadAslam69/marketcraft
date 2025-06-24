@@ -15,11 +15,36 @@ export default function ContactFormModal({ open, setOpen }: { open: boolean; set
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Here, you can integrate with your backend/email service
-    setSubmitted(true)
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  try {
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(formData)
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) throw new Error(data.message || "Something went wrong");
+
+    setSubmitted(true);
+
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error('Contact Form Submission Failed:', error);
+      alert(`Something went wrong: ${error.message}`);
+    } else {
+      console.error('Unknown error:', error);
+      alert('Something went wrong.');
+    }
   }
+};
+
+
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>

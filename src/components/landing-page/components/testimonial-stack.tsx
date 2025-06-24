@@ -223,9 +223,10 @@ export default function TestimonialStack({
                   <div className={`mb-3 ${getTextColor(card.accentColor)}`}>
                     <Quote className="w-8 h-8 opacity-70" />
                   </div>
-                  <p className="text-dark-slate-gray text-sm md:text-base flex-1 overflow-hidden">
-                    {card.quote.length > 150 ? `${card.quote.substring(0, 150)}...` : card.quote}
-                  </p>
+                  <p className="text-dark-slate-gray text-sm md:text-base flex-1">
+                      {card.quote}
+                    </p>
+
                    
                 </div>
                 <div className="flex items-center mt-4 pt-3 border-t border-cool-gray/10">

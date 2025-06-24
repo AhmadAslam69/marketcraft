@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Facebook, Instagram, Twitter ,Linkedin } from "lucide-react"
+import { Linkedin } from "lucide-react"
 import Link from "next/link"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import Image from "next/image"  
@@ -80,7 +80,7 @@ const Footer = () => {
 
             {/* Social icons */}
             <div className="mt-6 flex space-x-4">
-              <a
+              {/*<a
                 href="#"
                 className="group flex h-10 w-10 items-center justify-center rounded-full bg-white/10 transition-all hover:bg-[#4A90E2]"
                 aria-label="Facebook"
@@ -100,9 +100,10 @@ const Footer = () => {
                 aria-label="Twitter"
               >
                 <Twitter size={20} className="text-white" />
-              </a>
+              </a>*/}
                <a
-                href="#"
+                href="https://www.linkedin.com/company/marketcraft-1/"
+                 target="_blank"
                 className="group flex h-10 w-10 items-center justify-center rounded-full bg-white/10 transition-all hover:bg-[#A8E6CF]"
                 aria-label="Twitter"
               >

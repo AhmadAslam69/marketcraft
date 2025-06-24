@@ -1,4 +1,5 @@
 'use client'
+
 import React, { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -11,25 +12,27 @@ import Footer from '@/components/layouts/landing-page/Footer'
 import GoogleLoginButton from '@/components/oAuth/GoogleLoginButton'
 import api from '@/lib/axios'
 
-
 const Signup = () => {
-  const params=useParams()
-  const role = params.role as string
-  
+  const params = useParams()
+  const role = (params?.role as string) ?? ''
+  const allowedRoles = ['patient']
+
+  const router = useRouter()
   const [showPassword, setShowPassword] = useState(false)
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
-  const router = useRouter()
 
-  const allowedRoles = ['patient']
-  if (!allowedRoles.includes(role)) router.replace('/404')
-  
+  if (!allowedRoles.includes(role)) {
+    router.replace('/404')
+    return null
+  }
+
   const validateEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
 
-  const handleSubmit = async(e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!name || !email || !password) {
       setError('All fields are required.')
@@ -39,23 +42,28 @@ const Signup = () => {
       setError('Please enter a valid email.')
       return
     }
+
     setLoading(true)
+    setError('')
+
     try {
-        const res=await api.post(`/signup`,{name,email,password,role:'PATIENT'})
-      if(res.data.success)
- {  
-            localStorage.setItem('email',email)
-            router.push(`/patient/otp`)
-         
-          }
-      else
-           setError(res.data.message) 
-     
+      const res = await api.post(`/signup`, {
+        name,
+        email,
+        password,
+        role: 'PATIENT'
+      })
+
+      if (res.data.success) {
+        localStorage.setItem('email', email)
+        router.push(`/patient/otp`)
+      } else {
+        setError(res.data.message)
+      }
     } catch (err) {
-      console.log(err)
+      console.error(err)
       setError('Something went wrong.')
-     
-    }finally{
+    } finally {
       setLoading(false)
     }
   }
@@ -63,9 +71,9 @@ const Signup = () => {
   return (
     <>
       <Navbar />
-     <div className="min-h-screen pt-14 flex items-center justify-center bg-gradient-to-b from-mint-green via-snow-white to-mint-green p-4">
-            <Card className="w-full max-w-md bg-dark-slate-gray backdrop-blur-md border-0 shadow-xl animate-fade-in">
-               <CardHeader className="space-y-1 text-center">
+      <div className="min-h-screen pt-14 flex items-center justify-center bg-gradient-to-b from-mint-green via-snow-white to-mint-green p-4">
+        <Card className="w-full max-w-md bg-dark-slate-gray backdrop-blur-md border-0 shadow-xl animate-fade-in">
+          <CardHeader className="space-y-1 text-center">
             <CardTitle className="text-2xl font-bold tracking-tight text-snow-white animate-slide-in-right">
               Create an Account
             </CardTitle>
@@ -73,6 +81,7 @@ const Signup = () => {
               Sign up to start managing your health journey
             </p>
           </CardHeader>
+
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="relative animate-slide-in-right delay-200">
@@ -85,6 +94,7 @@ const Signup = () => {
                   className="pl-10 bg-white/5 border-gray-700 text-white placeholder:text-gray-400 focus:ring-2 focus:ring-snow-white"
                 />
               </div>
+
               <div className="relative animate-slide-in-right delay-300">
                 <Mail className="absolute left-3 top-3 h-5 w-5 text-snow-white" />
                 <Input
@@ -95,6 +105,7 @@ const Signup = () => {
                   className="pl-10 bg-white/5 border-gray-700 text-white placeholder:text-gray-400 focus:ring-2 focus:ring-snow-white"
                 />
               </div>
+
               <div className="relative animate-slide-in-right delay-400">
                 <Lock className="absolute left-3 top-3 h-5 w-5 text-snow-white" />
                 <Input
@@ -128,19 +139,11 @@ const Signup = () => {
                 {loading ? 'Creating Account...' : 'Create Account'}
               </Button>
             </form>
-           
-          {role=='patient' &&  <GoogleLoginButton/> }
-          <div className="mt-4 text-center text-sm text-snow-white animate-slide-in-right delay-500">
-              Don&apos;t have an account?{' '}
-              <Link
-                href={`/${role}/signup`}
-                className="text-soft-blue hover:text-blue-300 transition-colors duration-300"
-              >
-                Sign up
-              </Link>
-            </div>
+
+            {role === 'patient' && <GoogleLoginButton />}
+
             <div className="mt-4 text-center text-sm text-snow-white animate-slide-in-right delay-500">
-              Not a {role.charAt(0).toUpperCase() + role.slice(1)}?{' '}
+              Already have an account?{' '}
               <Link
                 href="/roles"
                 className="text-soft-blue hover:text-blue-300 transition-colors duration-300"
@@ -150,7 +153,6 @@ const Signup = () => {
             </div>
           </CardContent>
         </Card>
-        
       </div>
       <Footer />
     </>

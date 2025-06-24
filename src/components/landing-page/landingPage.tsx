@@ -2,7 +2,7 @@ import HeroSection from "@/components/landing-page/components/hero-section"
 import Our_services from "@/components/landing-page/components/services"
 import MissionStats from "@/components/landing-page/components/mission-stats"
 import HowItWorks from "@/components/landing-page/components/how-it-works"
-import Marketingquiz from "@/components/landing-page/components/marketing-score-quiz"
+
 
 
 import Testimonials from "@/components/landing-page/components/testimonials"
@@ -25,12 +25,10 @@ export default function LandingPage() {
 
       <MissionStats />
       <HowItWorks />
-      <Marketingquiz />
-       <Clients/>
       
-      
+      <Clients/>     
       <Testimonials />
-      
+
 
 
        <section id="blog">
