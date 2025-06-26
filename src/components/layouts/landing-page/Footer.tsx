@@ -50,8 +50,11 @@ const Footer = () => {
               </li>
               <li className="flex items-start">
                 <span className="mr-3 mt-1 text-[#FF6F61]">📞</span>
-                <span>+92 304 9966614</span>
+                <a href="tel:+923049966614" className="text-[#7F8C8D] hover:text-[#4A90E2] transition-colors">
+                  +92 304 9966614
+                </a>
               </li>
+
               <li className="flex items-start">
                 <span className="mr-3 mt-1 text-[#FF6F61]">✉️</span>
                 <a href="mailto:contact@hygieia.com" className="hover:text-[#4A90E2] transition-colors">
@@ -63,20 +66,26 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="mb-5 text-xl font-semibold text-[#A8E6CF]">Quick Links</h3>
-            <ul className="space-y-3">
-              {["About Us", "Services", "Blog", "Contact"].map((link) => (
-                <li key={link}>
-                  <Link
-                    href={`/${link.toLowerCase().replace(" ", "-")}`}
-                    className="group flex items-center text-[#7F8C8D] transition-colors hover:text-[#4A90E2]"
-                  >
-                    <span className="mr-2 h-1.5 w-1.5 rounded-full bg-[#FF6F61] transition-all group-hover:bg-[#4A90E2] group-hover:scale-150"></span>
-                    {link}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          
+              <h3 className="mb-5 text-xl font-semibold text-[#A8E6CF]">Quick Links</h3>
+              <ul className="space-y-3">
+                {[
+                  { label: "About Us", path: "/#hero-section" },
+                  { label: "Services", path: "/#services" },
+                  { label: "Blog/Newsletter", path: "/#blog" },
+                  
+                ].map(({ label, path }) => (
+                  <li key={label}>
+                    <Link
+                      href={path}
+                      className="group flex items-center text-[#7F8C8D] transition-colors hover:text-[#4A90E2]"
+                    >
+                      <span className="mr-2 h-1.5 w-1.5 rounded-full bg-[#FF6F61] transition-all group-hover:bg-[#4A90E2] group-hover:scale-150"></span>
+                      {label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
 
             {/* Social icons */}
             <div className="mt-6 flex space-x-4">

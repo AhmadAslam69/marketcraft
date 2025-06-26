@@ -8,12 +8,12 @@ import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Check } from "lucide-react"
-import Image from "next/image"
-import Link from "next/link"
+{/*import Image from "next/image"
+import Link from "next/link"*/}
 
 import api from "@/lib/axios"
 
-const blogPosts = [
+{/*const blogPosts = [
   
   {
     slug: "why-digital-marketing-matters-2025", // ← ADD THIS
@@ -36,7 +36,7 @@ const blogPosts = [
     category: "Marketing",
     image: "/visual.jpg",
   },
-]
+]*/}
 
 
 
@@ -63,10 +63,12 @@ export default function BlogNewsletter() {
   }
 
   return (
+    
     <section className="py-20 px-4 md:px-10 bg-gradient-to-b from-mint-green to-snow-white">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row gap-12">
-          {/* Blog */}
+        <div className="flex flex-col md:flex-row gap-12 justify-center items-center">
+
+          {/* Blog 
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -119,8 +121,9 @@ export default function BlogNewsletter() {
             <div className="mt-8 text-center">
               <Button className="bg-soft-blue hover:bg-[#1a3a5f] text-white">View All Articles</Button>
             </div>
-          </motion.div>
 
+          </motion.div> 
+*/}
           {/* Newsletter */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}

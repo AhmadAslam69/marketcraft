@@ -17,7 +17,9 @@ export default function LandingPage() {
   return (
     <main className="min-h-screen overflow-x-hidden">
       <Navbar/>
+      <section id="hero-section">
       <HeroSection />
+      </section>
 
        <section id="services">
         <Our_services />

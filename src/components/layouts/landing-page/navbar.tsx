@@ -60,7 +60,7 @@ export default function Navbar() {
               <Image width={30} height={30} src="/logo/logom.png" alt="MarketCraft"  className="h-full w-full object-contain" />
             </div>
             <motion.span style={{ color: textColor }} className="text-2xl font-bold tracking-tight">
-              Market Craft 
+             
             </motion.span>
           </motion.div>
         </Link>
