@@ -46,8 +46,16 @@ const Footer = () => {
             <ul className="space-y-4 text-[#7F8C8D]">
               <li className="flex items-start">
                 <span className="mr-3 mt-1 text-[#FF6F61]">📍</span>
-                <span>Plot no 181, 1st floor, Commercial Area Sector C Bahria Town, Lahore, 54000</span>
+                <a
+                  href="https://maps.app.goo.gl/62zM2HvC7b3xbMBD9?g_st=iw"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline text-blue-600"
+                >
+                  Plot no 181, 1st floor, Commercial Area Sector C Bahria Town, Lahore, 54000
+                </a>
               </li>
+
               <li className="flex items-start">
                 <span className="mr-3 mt-1 text-[#FF6F61]">📞</span>
                 <a href="tel:+923049966614" className="text-[#7F8C8D] hover:text-[#4A90E2] transition-colors">
