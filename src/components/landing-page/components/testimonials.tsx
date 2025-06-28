@@ -34,7 +34,7 @@ export default function Testimonials() {
             className="w-full max-w-md"
           >
             <TestimonialStack
-              cardDimensions={{ width: 320, height: 280 }}
+              cardDimensions={{ width: 320, height: 380 }}
               randomRotation={true}
               sensitivity={150}
               testimonials={[
